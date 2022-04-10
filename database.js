@@ -57,7 +57,7 @@ if (row === undefined) {
 }
 
 // Connect to a database or create one if it doesn't exist yet.
-const db3 = new Database('accesslog.db');
+const db3 = new Database('entrieslog.db');
 
 // Is the database initialized or do we need to initialize it?
 const stmt = db3.prepare(`
@@ -71,7 +71,7 @@ if (row === undefined) {
     console.log('Your database appears to be empty. I will initialize it now.');
 // Set a const that will contain your SQL commands to initialize the database.
     const sqlInit = `
-        CREATE TABLE accesslog ( id INTEGER PRIMARY KEY, rating TEXT, entry TEXT, time TEXT);
+        CREATE TABLE entrieslog ( id INTEGER PRIMARY KEY, rating TEXT, entry TEXT, time TEXT);
     `;
 // Execute SQL commands that we just wrote above.
     db3.exec(sqlInit);
