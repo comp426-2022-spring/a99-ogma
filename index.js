@@ -36,10 +36,8 @@ app.use((req, res, next) => {
     const info = stmt.run(logdata.remoteaddr.toString(), logdata.remoteuser, logdata.time, logdata.method.toString(), logdata.url.toString(), logdata.protocol.toString(), logdata.httpversion.toString(), logdata.secure.toString(), logdata.status.toString(), logdata.referer, logdata.useragent.toString())
     next()
 })
-if (logger == true) {
-  const WRITESTREAM = fs.createWriteStream('access.log', { flags: 'a' })
-      app.use(morgan('combined', { stream: WRITESTREAM }))
-}
+const WRITESTREAM = fs.createWriteStream('access.log', { flags: 'a' })
+    app.use(morgan('combined', { stream: WRITESTREAM }))
 
 app.get('/app/', (req, res) => {
     res.statusCode = 200;
