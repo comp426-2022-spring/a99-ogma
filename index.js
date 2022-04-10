@@ -57,30 +57,30 @@ app.get('/app/new_user', (req, res) =>{
 
 }) 
 
-app.get('/app/accountinfo', (req, res) =>{
+app.get('/app/accountinfo/:user', (req, res) =>{
 
 }) 
 
-app.get('/app/change_username', (req, res) =>{
+app.get('/app/change_username/:user', (req, res) =>{
 
 })
 
-app.get('/app/change_password', (req, res) => {
+app.get('/app/change_password/:user', (req, res) => {
 
 })
 
-app.get('/app/delete_account', (req, res) => {
+app.get('/app/delete_account/:user', (req, res) => {
 
 })
 
-app.get('/app/past_entries', (req, res) => {
+app.get('/app/past_entries/:user', (req, res) => {
 
 })
 
-app.get('/app/edit_entires', (req, res) => {
+app.get('/app/edit_entires/:user', (req, res) => {
 
 })
 
-app.get('/app/new_entry', (req, res) => {
+app.get('/app/new_entry/:user', (req, res) => {
 
 })
