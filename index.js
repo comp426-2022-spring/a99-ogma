@@ -52,7 +52,7 @@ app.get('/app/', (req, res) => {
 app.get('/app/login', (req, res) => {
 
 })
-
+//Sarika
 app.get('/app/new_user', (req, res) =>{
 
 }) 
@@ -60,27 +60,27 @@ app.get('/app/new_user', (req, res) =>{
 app.get('/app/accountinfo/:user', (req, res) =>{
 
 }) 
-
+//Jaycee
 app.get('/app/change_username/:user', (req, res) =>{
 
 })
-
+//Jaycee
 app.get('/app/change_password/:user', (req, res) => {
 
 })
-
+//Sarika
 app.get('/app/delete_account/:user', (req, res) => {
 
 })
-
+//Anthony
 app.get('/app/past_entries/:user', (req, res) => {
 
 })
-
+//Anthony
 app.get('/app/edit_entires/:user', (req, res) => {
 
 })
-
+//Anthony
 app.get('/app/new_entry/:user', (req, res) => {
 
 })
