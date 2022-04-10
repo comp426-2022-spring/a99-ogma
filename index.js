@@ -41,3 +41,46 @@ if (logger == true) {
       app.use(morgan('combined', { stream: WRITESTREAM }))
 }
 
+app.get('/app/', (req, res) => {
+    res.statusCode = 200;
+    res.statusMessage = 'OK';
+    res.status(200);
+    res.type('text/plain')
+    res.send(res.statusCode + ' ' + res.statusMessage);
+  });
+
+app.get('/app/login', (req, res) => {
+
+})
+
+app.get('/app/new_user', (req, res) =>{
+
+}) 
+
+app.get('/app/accountinfo', (req, res) =>{
+
+}) 
+
+app.get('/app/change_username', (req, res) =>{
+
+})
+
+app.get('/app/change_password', (req, res) => {
+
+})
+
+app.get('/app/delete_account', (req, res) => {
+
+})
+
+app.get('/app/past_entries', (req, res) => {
+
+})
+
+app.get('/app/edit_entires', (req, res) => {
+
+})
+
+app.get('/app/new_entry', (req, res) => {
+
+})
