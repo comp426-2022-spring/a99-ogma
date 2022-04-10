@@ -59,12 +59,24 @@ app.get('/app/accountinfo/:user', (req, res) =>{
 
 }) 
 //Jaycee
-app.get('/app/change_username/:user', (req, res) =>{
-
+//Changes Username in database based on id given
+app.patch('/app/change_username/:id', (req, res) =>{
+    let data = {
+        user: req.body.username
+    }
+    const stmt = db.prepare('UPDATE users SET username = COALESCE(?,username) WHERE id = ?')
+    const info = stmt.run(data.user, req.params.id)
+    res.status(200).json(info)
 })
 //Jaycee
-app.get('/app/change_password/:user', (req, res) => {
-
+//Changes password in database based on id given
+app.patch('/app/change_password/:id', (req, res) => {
+    let data = {
+        pass: req.body.password
+    }
+    const stmt = db.prepare('UPDATE users SET password = COALESCE(?,password) WHERE id = ?')
+    const info = stmt.run(data.pass, req.params.id)
+    res.status(200).json(info)
 })
 //Sarika
 app.get('/app/delete_account/:user', (req, res) => {
