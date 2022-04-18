@@ -84,16 +84,32 @@ app.get('/app/delete_account/:user', (req, res) => {
 
 })
 //Anthony
+//Retrieves all past entries based on user
 app.get('/app/past_entries/:user', (req, res) => {
-    const stmt = db.prepare('SELECT entry FROM entrylogs WHERE user = ?')
+    const stmt = db.prepare('SELECT entry FROM entrylogs WHERE username = ?')
     const entries = stmt.run(req.params.user).all()
     res.status(200).json(entries)
 })
 //Anthony
-app.patch('/app/edit_entires/:user', (req, res) => {
-    
+//Edits entry based on username and entry number
+app.patch('/app/edit_entry/:user', (req, res) => {
+    let data = {
+        entry_number: req.body.entrynumber
+    }
+    const stmt = db.prepare('SELECT entry FROM entrylogs WHERE username = ? AND entrynumber = ?')
+    const entry = stmt.run(req.params.user, data.entry_number)
+    res.status(200).json(entry)
 })
 //Anthony
+//Inserts new entry into database, and displays new entry
 app.post('/app/new_entry/:user', (req, res) => {
-
+    const stmt1 = db.prepare('SELECT MAX(entrynumber) FROM entrylogs WHERE username = ?')
+    const next_entry = stmt1.run(req.params.user) + 1
+    let data = {
+        entry_rating: req.body.rating,
+        new_entry: req.body.entry
+    }
+    const stmt2 = db.prepare('INSERT INTO entrylogs (username, rating, entry, time, entrynumber) VALUES (?,?,?,?,?)')
+    const the_entry = stmt2.run(req.params.user, data.entry_rating, data.new_entry, req.time, next_entry)
+    res.status(200).json(the_entry)
 })

@@ -17,11 +17,11 @@ if (row === undefined) {
     `;
     db.exec(sqlInit);
     const sqlInit2 = `
-        CREATE TABLE users (username TEXT PRIMARY KEY, password TEXT, email TEXT);
+        CREATE TABLE users (id INTEGER PRIMARY KEY, username TEXT, password TEXT, email TEXT);
     `;
     db.exec(sqlInit2);
     const sqlInit3 = `
-        CREATE TABLE entrylogs (username TEXT PRIMARY KEY, rating TEXT, entry TEXT, time TEXT);
+        CREATE TABLE entrylogs (username TEXT PRIMARY KEY, rating TEXT, entry TEXT, time TEXT, entrynumber);
     `;
     db.exec(sqlInit3);
     console.log('Your database has been initialized.');
