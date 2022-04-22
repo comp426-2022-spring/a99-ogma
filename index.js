@@ -19,9 +19,11 @@ const server = app.listen(port, () => {
     console.log('App listening on port %PORT%'.replace('%PORT%',port))
 });
 
+const user_name = null // Gloabl var that is set with a vaild login
+
 app.use((req, res, next) => {
     let logdata = {
-        username: "PLACEHOLDER",
+        username: user_name,
         remoteaddr: req.ip,
         remoteuser: req.user,
         time: Date.now().toString(),
@@ -34,13 +36,13 @@ app.use((req, res, next) => {
         referer: req.headers['referer'],
         useragent: req.headers['user-agent']
     }
-    const stmt = db.prepare('INSERT INTO accesslog (username, remoteaddr, remoteuser, time, method, url,  protocol, httpversion, secure, status, referer, useragent) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)')
+    const stmt = db.prepare('INSERT INTO access (username, remoteaddr, remoteuser, time, method, url,  protocol, httpversion, secure, status, referer, useragent) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)')
     const info = stmt.run(logdata.username, logdata.remoteaddr.toString(), logdata.remoteuser, logdata.time, logdata.method.toString(), logdata.url.toString(), logdata.protocol.toString(), logdata.httpversion.toString(), logdata.secure.toString(), logdata.status.toString(), logdata.referer, logdata.useragent.toString())
     next()
 })
 const WRITESTREAM = fs.createWriteStream('access.log', { flags: 'a' })
     app.use(morgan('combined', { stream: WRITESTREAM }))
-
+//App entry point
 app.get('/app/', (req, res) => {
     res.statusCode = 200;
     res.statusMessage = 'OK';
@@ -48,23 +50,38 @@ app.get('/app/', (req, res) => {
     res.type('text/plain')
     res.send(res.statusCode + ' ' + res.statusMessage);
   });
-
-app.get('/app/login', (req, res) => {
-
+//Attempts to login a user
+app.post('/app/login', (req, res) => {
+    let data = {
+        username: req.body.username,
+        password: req.body.password
+    }
+    try {
+        const stmt = db.prepare('SELECT entry FROM usersinfo WHERE username = ? AND password = ?').get(data.username, data.password)
+        user_name = data.username;
+    }
+    catch (e) {
+        console.error(e)
+        res.status(401).json({'message':'invaild username or password'})
+    }
 })
 //Sarika
-app.get('/app/new_user', (req, res) =>{
+//Creates a new user
+app.post('/app/new_user', (req, res) =>{
     let data = {
         user: req.body.username,
-        pass: req.body.password
+        pass: req.body.password,
+        email: req.body.email
     }
-    const stmt = db.prepare('INSERT INTO users (username, password) VALUES (?, ?)')
-    const info = stmt.run(data.user, data.pass)
+    const stmt = db.prepare('INSERT INTO usersinfo (username, password, email) VALUES (?, ?, ?)')
+    const info = stmt.run(data.user, data.pass, data.email)
     res.status(200).json(info)
 }) 
-
-app.get('/app/accountinfo/:user', (req, res) =>{
-
+//Gets user info if given vaild id
+app.get('/app/accountinfo/:id', (req, res) =>{
+    const stmt = db.prepare('SELECT entry FROM usersinfo WHERE username = ?')
+    const entries = stmt.run(req.params.id).all()
+    res.status(200).json(entries)
 }) 
 //Jaycee
 //Changes Username in database based on id given
@@ -72,7 +89,7 @@ app.patch('/app/change_username/:id', (req, res) =>{
     let data = {
         user: req.body.username
     }
-    const stmt = db.prepare('UPDATE users SET username = COALESCE(?,username) WHERE id = ?')
+    const stmt = db.prepare('UPDATE usersinfo SET username = COALESCE(?,username) WHERE id = ?')
     const info = stmt.run(data.user, req.params.id)
     res.status(200).json(info)
 })
@@ -82,13 +99,13 @@ app.patch('/app/change_password/:id', (req, res) => {
     let data = {
         pass: req.body.password
     }
-    const stmt = db.prepare('UPDATE users SET password = COALESCE(?,password) WHERE id = ?')
+    const stmt = db.prepare('UPDATE usersinfo SET password = COALESCE(?,password) WHERE id = ?')
     const info = stmt.run(data.pass, req.params.id)
     res.status(200).json(info)
 })
 //Sarika
-app.get('/app/delete_account/:user', (req, res) => {
-    const stmt = db.prepare('DELETE FROM users WHERE id = ?')
+app.delete('/app/delete_account', (req, res) => {
+    const stmt = db.prepare('DELETE FROM usersinfo WHERE id = ?')
     const info = stmt.run(req.params.id)
     res.status(200).json(info)
 })
@@ -122,3 +139,8 @@ app.post('/app/new_entry/:user', (req, res) => {
     const the_entry = stmt2.run(req.params.user, data.entry_rating, data.new_entry, req.time, next_entry)
     res.status(200).json(the_entry)
 })
+//Default if endpoint cannot be found
+app.use(function(req, res){
+	res.json({"message":"Endpoint not found. (404)"});
+    res.status(404);
+});
