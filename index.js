@@ -5,6 +5,7 @@ var fs = require('fs')
 const db = require("./database.js")
 var md5 = require("md5");
 const { aggregate } = require('./database.js');
+const { runInNewContext } = require('vm');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -53,7 +54,13 @@ app.get('/app/login', (req, res) => {
 })
 //Sarika
 app.get('/app/new_user', (req, res) =>{
-
+    let data = {
+        user: req.body.username,
+        pass: req.body.password
+    }
+    const stmt = db.prepare('INSERT INTO users (username, password) VALUES (?, ?)')
+    const info = stmt.run(data.user, data.pass)
+    res.status(200).json(info)
 }) 
 
 app.get('/app/accountinfo/:user', (req, res) =>{
@@ -81,7 +88,9 @@ app.patch('/app/change_password/:id', (req, res) => {
 })
 //Sarika
 app.get('/app/delete_account/:user', (req, res) => {
-
+    const stmt = db.prepare('DELETE FROM users WHERE id = ?')
+    const info = stmt.run(req.params.id)
+    res.status(200).json(info)
 })
 //Anthony
 //Retrieves all past entries based on user
