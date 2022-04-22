@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/comp426-2022-spring/a99-ogma#readme",
   "dependencies": {
-    "better-sqlite3": "^7.5.1"
+    "better-sqlite3": "^7.5.1",
+    "express": "^4.17.3",
+    "md5": "^2.3.0",
+    "minimist": "^1.2.6",
+    "morgan": "^1.10.0"
   }
 }
