@@ -1,0 +1,7 @@
+div.hidden {
+    display: none;
+  }
+  
+  div.active {
+    border: 5px solid red;
+  }
