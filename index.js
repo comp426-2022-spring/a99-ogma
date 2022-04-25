@@ -1,27 +1,42 @@
-const express = require('express');
-const mongoose = require('mongoose')
+/*const express = require('express');
+//const mongoose = require('mongoose')
 const app = express();
 const morgan = require('morgan')
 var fs = require('fs')
 const db = require("./database.js")
 var md5 = require("md5");
 const { aggregate } = require('./database.js');
-const { runInNewContext } = require('vm');
+//const { runInNewContext } = require('vm');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-const articleRouter = require('./routes/articles')
-app.use('/articles', articleRouter)
+//const articleRouter = require('./routes/articles')
+//app.use('/articles', articleRouter)
+const cors = require('cors')
+// Set up cors middleware on all endpoints
+app.use(cors())
+app.use(express.json())
+app.use(express.static('./public')); */
+
+/*mongoose.connect('mongodb://localhost/blog', {
+    useNewUrlParser: true, useUnifiedTopology: true
+})
+
+app.set('view engine', 'ejs')*/
+
+
+const express = require('express');
+const app = express();
+const morgan = require('morgan')
+var fs = require('fs')
+const db = require("./database.js")
+var md5 = require("md5");
+const { aggregate } = require('./database.js');
+// Add cors dependency
 const cors = require('cors')
 // Set up cors middleware on all endpoints
 app.use(cors())
 app.use(express.json())
 app.use(express.static('./public'));
-
-mongoose.connect('mongodb://localhost/blog', {
-    useNewUrlParser: true, useUnifiedTopology: true
-})
-
-app.set('view engine', 'ejs')
 
 var args = require("minimist")(process.argv.slice(2), {
     int: ['port']
@@ -68,7 +83,7 @@ app.get('/app/', (req, res) => {
     res.status(200);
     res.type('text/plain')
     res.send(res.statusCode + ' ' + res.statusMessage);
-    res.render('articles/index', {articles: articles})
+    //res.render('articles/index', {articles: articles})
   });
 //Attempts to login a user
 app.post('/app/login', (req, res) => {
