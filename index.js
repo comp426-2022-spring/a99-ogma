@@ -11,6 +11,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 const articleRouter = require('./routes/articles')
 app.use('/articles', articleRouter)
+const cors = require('cors')
+// Set up cors middleware on all endpoints
+app.use(cors())
+app.use(express.json())
+app.use(express.static('./public'));
 
 mongoose.connect('mongodb://localhost/blog', {
     useNewUrlParser: true, useUnifiedTopology: true
