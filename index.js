@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose')
 const app = express();
 const morgan = require('morgan')
 var fs = require('fs')
@@ -8,6 +9,14 @@ const { aggregate } = require('./database.js');
 const { runInNewContext } = require('vm');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+const articleRouter = require('./routes/articles')
+app.use('/articles', articleRouter)
+
+mongoose.connect('mongodb://localhost/blog', {
+    useNewUrlParser: true, useUnifiedTopology: true
+})
+
+app.set('view engine', 'ejs')
 
 var args = require("minimist")(process.argv.slice(2), {
     int: ['port']
@@ -44,11 +53,17 @@ const WRITESTREAM = fs.createWriteStream('access.log', { flags: 'a' })
     app.use(morgan('combined', { stream: WRITESTREAM }))
 //App entry point
 app.get('/app/', (req, res) => {
+    const articles = [{
+        title: 'Test Article',
+        createdAt: new Date(),
+        description: 'Test description'
+    }]
     res.statusCode = 200;
     res.statusMessage = 'OK';
     res.status(200);
     res.type('text/plain')
     res.send(res.statusCode + ' ' + res.statusMessage);
+    res.render('articles/index', {articles: articles})
   });
 //Attempts to login a user
 app.post('/app/login', (req, res) => {
