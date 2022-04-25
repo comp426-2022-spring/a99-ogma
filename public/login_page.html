@@ -10,20 +10,14 @@
   <div style = "text-align: center;">
   <h1>Log in to your account.</h1>
   <body>
-  </div>
     <!-- <h1 id="appName"> MyJournal </h1> -->
     <form action = "username_password" method = "post">
         <label>Enter your email/username:</label>
         <input type = "text" name="email/username"><br>
         <label>Enter your password:</label>
         <input type = "text" name="password">
-        <input type = "submit" value = "Submit">
+        <button onclick= "location.href = 'entry_page.html';" id="submitButton" class="float-left submit-button" >Submit</button>
     </form>
-
-    <div style = "text-align: center;">
-    <button onclick= "location.href = 'login_page.html';" id="loginButton" class="float-left submit-button" >Login</button>
-    <button onclick= "location.href = 'create_login.html';" id="createButton" class="float-left submit-button" >Create User</button>
-    </div>
-
-</body>
+  </body>
+</div>
 </html>
