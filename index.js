@@ -34,9 +34,14 @@ const { aggregate } = require('./database.js');
 // Add cors dependency
 const cors = require('cors')
 // Set up cors middleware on all endpoints
+const bodyParser = require('body-parser')
+// Configuring body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(cors())
 app.use(express.json())
 app.use(express.static('./public'));
+
 
 var args = require("minimist")(process.argv.slice(2), {
     int: ['port']
@@ -49,6 +54,7 @@ const server = app.listen(port, () => {
 });
 
 const user_name = null // Gloabl var that is set with a vaild login
+
 
 app.use((req, res, next) => {
     let logdata = {
@@ -83,6 +89,7 @@ app.get('/app/', (req, res) => {
     res.status(200);
     res.type('text/plain')
     res.send(res.statusCode + ' ' + res.statusMessage);
+
     //res.render('articles/index', {articles: articles})
   });
 //Attempts to login a user
