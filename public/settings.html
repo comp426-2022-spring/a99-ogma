@@ -5,29 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/boostrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAis6JXm" crossorigin="anonymous">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Create Account</title>
+  <title>Account Settings</title>
 </head>
   <div style = "text-align: center;">
-  <h1>Let's get started.</h1>
+  <h1>Account Settings</h1>
   <body>
     <form action="entry_page.html" method="POST">
         <div class="form-group">
-            <label for="email">Your email address:</label>
-            <input class="form-control" name="email" required>
+            <label for="username">Change Username:</label>
+            <input class="form-control" name="username">
         </div>
 
         <div class="form-group">
-            <label for="username">Choose a username:</label>
-            <input class="form-control" name="username" required>
+            <label for="password">Change Password:</label>
+            <input class="form-control" name="password">
         </div>
 
-        <div class="form-group">
-            <label for="passsword">Choose a password:</label>
-            <input class="form-control" name="password" required>
-            <input type="hidden" name="action" value="register">
-        </div>
-
-        <button onclick= "location.href = 'entry_page.html';" type="submit" class="btn btn-primary">Create my account</button>
+        <button onclick= "location.href = 'bye.html';" type="submit" class="btn btn-primary">Delete Account</button>
     </form>
     </body>
 </div>
