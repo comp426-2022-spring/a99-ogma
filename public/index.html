@@ -10,62 +10,16 @@
   <div style = "text-align: center;">
   <h1>Hi! Nice to see you.</h1>
   <body>
-  </div>
-    <!-- <h1 id="appName"> MyJournal </h1> -->
     <div style = "text-align: center;">
-    <button onclick= "location.href = 'login_page.html';" id="loginButton" class="float-left submit-button" >Login</button>
-    <button onclick= "location.href = 'create_login.html';" id="createButton" class="float-left submit-button" >Create User</button>
+      <button onclick= "location.href = 'login_page.html';" id="loginButton" class="submit-button" >Login</button>
     </div>
 
+    <div style = "text-align: center;">
+      <button onclick= "location.href = 'create_login.html';" id="createButton" class="submit-button" >Create User</button>
+    </div>
+
+    <div style = "text-align: center;">
+      <button onclick= "location.href = 'profile.html';" id="profileButton" class="submit-button" >Go To Profile</button>
+    </div>
 </body>
 </html>
-  <!-- <div class = "container">
-    <h1 class="mb-4">My Journals</h1>
-    <a href="/articles/new" class="btn btn-success">New Article</a>
-    
-    <% articles.forEach(article => { %>
-      <div class="card mt-4">
-        <div class="card-body">
-          <h4 class="card-title"><%= article.title %></h4>
-          <div class="card-subtitle text-muted mb-2">
-            <%=<article.createdAt.toLocaleDateString() %>
-          </div>
-          <div class="card-text mb-2"><%= article.description %></div>
-        </div>
-      </div>
-    <% }) %>
-  </div> -->
-
-  
- <!-- <div class="form-group">
-    <label for="title">Title</label>
-    <input required type="text" name="title" id="title" class="form-control">
-</div>
-<div class="form-group">
-    <label for="description">Journal</label>
-    <textarea name="your journal" id="your journal" class="form-control"></textarea>
-</div>
-
-<a href="/" class="btn btn-secondary">Cancel</a>
-<button type="submit" class="btn btn-primary">Save</button>
-</body>
-</html>
-
- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/boostrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAis6JXm" crossorigin="anonymous">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>New Story | MyJournal</title>
-</head>
-<body>
-  <div class = "container">
-    <h1 class="mb-4">New Journal</h1>
-
-    <form action="/articles" method="POST"></form>
-    <%- include('_form_fields') %>
-  </div>
-</body>
-</html>-->
