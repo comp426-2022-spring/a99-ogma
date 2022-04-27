@@ -196,10 +196,10 @@ app.delete('/app/delete_account', (req, res) => {
 })
 //Anthony
 //Retrieves all past entries based on user
-app.get('/app/past_entries/:user', (req, res) => {
-    const stmt = db.prepare('SELECT entry FROM entrylogs WHERE username = ?')
-    const entries = stmt.run(req.params.user).all()
-    res.status(200).json(entries)
+app.get('/app/past_entries/', (req, res) => {
+    const stmt = db.prepare('SELECT * FROM entrylogs WHERE username = ?').all(user_name)
+    //const entries = stmt.run(req.params.user).all()
+    res.status(200).json(stmt)
 })
 //Anthony
 //Edits entry based on username and entry number
@@ -213,15 +213,15 @@ app.patch('/app/edit_entry/:user', (req, res) => {
 })
 //Anthony
 //Inserts new entry into database, and displays new entry
-app.post('/app/new_entry/', (req, res) => {
-    const stmt1 = db.prepare('SELECT MAX(entrynumber) FROM entrylogs WHERE username = ?')
-    const next_entry = stmt1.run(user_name) + 1
+app.post('/app/new_entry/', (req, res, next) => {
+    //const stmt1 = db.prepare('SELECT MAX(entrynumber) FROM entrylogs WHERE username = ?')
+    //const next_entry = stmt1.run(user_name) + 1
     let data = {
         entry_rating: req.body.rating,
         new_entry: req.body.entry
     }
-    const stmt2 = db.prepare('INSERT or IGNORE INTO entrylogs (username, rating, entry, time, entrynumber) VALUES (?,?,?,?,?)')
-    const the_entry = stmt2.run(user_name, data.entry_rating, data.new_entry, req.time, next_entry)
+    const stmt2 = db.prepare('INSERT INTO entrylogs (username, rating, entry) VALUES (?,?,?)')
+    const the_entry = stmt2.run(user_name, data.entry_rating, data.new_entry)
     console.log(data)
     res.status(200).redirect("http://localhost:5555/welcome_back.html")
 })

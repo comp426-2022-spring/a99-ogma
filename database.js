@@ -22,7 +22,7 @@ if (row === undefined) {
     `;
     db.exec(sqlInit2);
     const sqlInit3 = `
-        CREATE TABLE entrylogs (username TEXT PRIMARY KEY, rating TEXT, entry TEXT, time TEXT, entrynumber);
+        CREATE TABLE entrylogs (id INTEGER PRIMARY KEY, username TEXT, rating TEXT, entry TEXT);
     `;
     db.exec(sqlInit3);
     console.log('Your database has been initialized.');
