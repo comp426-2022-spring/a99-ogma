@@ -1,4 +1,5 @@
 const log = document.getElementById("login");
+const usr = "";
 log.addEventListener("submit", loginCheck)
 async function loginCheck(event) {
     event.preventDefault();
@@ -14,7 +15,10 @@ async function loginCheck(event) {
 
         console.log(info);
         console.log("Login Success")
+        usr = info.user
+        console.log(usr)
         window.location.href = 'new_entry.html'
+        window.getElementById("fake").innerHTML = "How are you feeling " + usr;
     } catch (error) {
         console.log(error);
     }

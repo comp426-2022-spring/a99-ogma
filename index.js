@@ -102,7 +102,7 @@ app.post('/app/login', (req, res) => {
         const stmt = db.prepare('SELECT entry FROM usersinfo WHERE username = ? AND password = ?').get(data.username, data.password)
         user_name = data.username;
         console.log(user_name)
-        res.status(200).json(stmt)
+        res.status(200).json({'user': user_name})
     }
     catch (e) {
         console.error(e)
@@ -112,7 +112,7 @@ app.post('/app/login', (req, res) => {
 //console.log(user_name)
 //Sarika
 //Creates a new user
-app.post('/app/new_user', (req, res) =>{
+app.post('/app/new_user', (req, res, next) =>{
     let data = {
         user: req.body.username,
         pass: req.body.password,
@@ -120,14 +120,15 @@ app.post('/app/new_user', (req, res) =>{
     }
     const stmt = db.prepare('INSERT INTO usersinfo (username, password, email) VALUES (?, ?, ?)')
     const info = stmt.run(data.user, data.pass, data.email)
+    console.log(info)
     res.status(200).json(info)
 }) 
 //Gets user info if given vaild id
 app.get('/app/accountinfo/:id', (req, res) =>{
     try {
     const stmt = db.prepare('SELECT * FROM usersinfo WHERE username = ?').get(req.params.id)
-    //const entries = stmt.run(req.params.id).all()
-    console.log(stmt)
+    const entries = stmt.run(req.params.id).all()
+    console.log(entries)
     res.status(200).json(stmt)
     console.log("success")
     }
@@ -192,8 +193,8 @@ app.post('/app/new_entry/:user', (req, res) => {
     res.status(200).json(the_entry)
 })
 //Default if endpoint cannot be found
-/*
+
 app.use(function(req, res){
 	res.json({"message":"Endpoint not found. (404)"});
     res.status(404);
-});*/
+})
