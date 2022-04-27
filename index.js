@@ -172,7 +172,8 @@ app.patch('/app/change_username/:id', (req, res) =>{
     }
     const stmt = db.prepare('UPDATE usersinfo SET username = COALESCE(?,username) WHERE id = ?')
     const info = stmt.run(data.user, req.params.id)
-    res.status(200).json(info)
+    //res.status(200).json(info)
+    res.status(200).redirect('https://localhost:5555/bye.html')
 })
 //Jaycee
 //Changes password in database based on id given
