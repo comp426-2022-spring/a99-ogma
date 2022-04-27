@@ -27,9 +27,8 @@
 </div>
 <p id="name"></p>
 <form>
-    <p>Journal entry:
-        <textarea id="journal" style="width: 757px; height: 170px" rows="10" cols="80"></textarea>
-    </p>
+    <h2>Type your journal entry below:</h2>
+    <textarea id="journal" style="width: 757px; height: 170px" rows="10" cols="80"></textarea>
 </form>
 <div class="w3-bar">
     <button onclick= "location.href = 'welcome_back.html';" id="finishButton" class="float-left submit-button" >Finish</button>
@@ -38,15 +37,15 @@
 <div class="w3-show-inline-block">
     <form action="http://localhost:5555/app/new_entry/" method="post">
         <input type="radio" id="r1" name="rating" value="1">
-        <label for="html">1</label><br>
+        <label for="r1">1</label><br>
         <input type="radio" id="r2" name="rating" value="2">
-        <label for="css">2</label><br>
+        <label for="r2">2</label><br>
         <input type="radio" id="r3" name="rating" value="3">
-        <label for="javascript">3</label>
+        <label for="r3">3</label>
         <input type="radio" id="r4" name="rating" value="4">
-        <label for="html">4</label><br>
+        <label for="r4">4</label><br>
         <input type="radio" id="r5" name="rating" value="5">
-        <label for="css">5</label><br>
+        <label for="r5">5</label><br>
         <label for="email">
             <strong>Entry</strong>
         </label>
