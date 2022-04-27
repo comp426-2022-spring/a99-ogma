@@ -108,7 +108,7 @@ app.post('/app/login', (req, res) => {
         user_name = data.username;
         console.log(stmt)
         if (stmt.username != null) {
-        console.log(user_name)
+        //console.log(user_name)
         res.status(200).redirect('http://localhost:5555/new_entry.html')
         }
         else {
@@ -170,12 +170,12 @@ app.post('/app/change_username', (req, res) =>{
     let data = {
         user: req.body.username
     }
-    const stmt = db.prepare('UPDATE usersinfo SET username = ? WHERE username = ?')
+    const stmt = db.prepare('UPDATE usersinfo SET username = COALESCE(?,username) WHERE username = ?')
     const info = stmt.run(data.user, user_name)
 
     //res.status(200).json(info)
     console.log("success")
-    user_name = data.user
+    //user_name = data.user
     res.status(200).redirect('http://localhost:5555/index.html')
 })
 //Jaycee
@@ -184,9 +184,13 @@ app.post('/app/change_password', (req, res) => {
     let data = {
         pass: req.body.password
     }
-    const stmt = db.prepare('UPDATE usersinfo SET password = ? WHERE username = ?')
+    const stmt = db.prepare('UPDATE usersinfo SET password = COALESCE(?,password) WHERE username = ?')
     const info = stmt.run(data.pass, user_name)
-    //console.log()
+
+    //res.status(200).json(info)
+    console.log("success")
+    //user_name = data.user
+    console.log(data.pass)
     res.status(200).redirect('http://localhost:5555/index.html')
 })
 //Sarika
