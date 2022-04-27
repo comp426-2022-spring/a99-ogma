@@ -121,9 +121,16 @@ app.post('/app/new_user', (req, res) =>{
 }) 
 //Gets user info if given vaild id
 app.get('/app/accountinfo/:id', (req, res) =>{
-    const stmt = db.prepare('SELECT entry FROM usersinfo WHERE username = ?')
-    const entries = stmt.run(req.params.id).all()
-    res.status(200).json(entries)
+    try {
+    const stmt = db.prepare('SELECT * FROM usersinfo WHERE username = ?').get(req.params.id)
+    //const entries = stmt.run(req.params.id).all()
+    console.log(stmt)
+    res.status(200).json(stmt)
+    console.log("success")
+    }
+    catch (e) {
+        console.log('1')
+    }
 }) 
 //Jaycee
 //Changes Username in database based on id given
