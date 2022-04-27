@@ -8,11 +8,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Log In</title>
 </head>
+    <body>
+    <!--<form action="account_page.html" method="POST">-->
   <div style = "text-align: center;">
   <h1>Log in to your account.</h1>
   <body>
-    <form id="login" action="entry_page.html" method="POST">
-        <div class="form-group">
+    <!--<form id="login" action="entry_page.html" method="POST">-->
+    <form id="login" action="new_entry.html">
+       <!-- <div class="form-group">
             <label for="username">Your username:</label>
             <input class="form-control" name="username" required>
         </div>
@@ -23,8 +26,20 @@
             <input type="hidden" name="action" value="register">
         </div>
 
-        <button onclick= "location.href = 'entry_page.html';" type="submit" class="btn btn-primary">Create my account</button>
+        <button onclick= "location.href = 'entry_page.html';" type="submit" class="btn btn-primary">Create my account</button> -->
+        <label for="user">
+					<strong>Username</strong>
+				</label>
+				<input type="text" name="user" id="user">
+        <label for="pass">
+					<strong>Password</strong>
+				</label>
+				<input type="text" name="pass" id="pass">
+				<input type="submit" value="Submit">
+        
     </form>
+    <button onclick= "location.href = 'create_login.html';" type="submit" class="btn btn-primary">Create my account</button>
+    <script src="main.js"></script>
     </body>
 </div>
 </html>

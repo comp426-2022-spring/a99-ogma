@@ -14,6 +14,7 @@ async function loginCheck(event) {
 
         console.log(info);
         console.log("Login Success")
+        window.location.href = 'new_entry.html'
     } catch (error) {
         console.log(error);
     }
@@ -53,6 +54,7 @@ async function registerUser(event) {
 
         console.log(info);
         console.log("Register Success")
+        window.location.href = 'login_page.html'
     } catch (error) {
         console.log(error);
     }
