@@ -176,7 +176,7 @@ app.post('/app/change_username', (req, res) =>{
     //res.status(200).json(info)
     console.log("success")
     user_name = data.user
-    res.status(200).redirect('https://localhost:5555/index.html')
+    res.status(200).redirect('http://localhost:5555/index.html')
 })
 //Jaycee
 //Changes password in database based on id given
@@ -184,17 +184,17 @@ app.post('/app/change_password', (req, res) => {
     let data = {
         pass: req.body.password
     }
-    const stmt = db.prepare('UPDATE usersinfo SET password = COALESCE(?,password) WHERE username = ?')
+    const stmt = db.prepare('UPDATE usersinfo SET password = ? WHERE username = ?')
     const info = stmt.run(data.pass, user_name)
     //console.log()
-    res.status(200).redirect('https://localhost:5555/index.html')
+    res.status(200).redirect('http://localhost:5555/index.html')
 })
 //Sarika
-app.delete('/app/delete_account', (req, res) => {
+app.post('/app/delete_account', (req, res) => {
     const stmt = db.prepare('DELETE FROM usersinfo WHERE username = ?')
     const info = stmt.run(user_name)
     console.log("success")
-    res.status(200).redirect('https://localhost:5555/bye.html')
+    res.status(200).redirect('http://localhost:5555/bye.html')
 })
 //Anthony
 //Retrieves all past entries based on user
