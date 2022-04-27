@@ -166,33 +166,34 @@ app.get('/app/accountinfo/', (req, res) =>{
 }) 
 //Jaycee
 //Changes Username in database based on id given
-app.patch('/app/change_username/:id', (req, res) =>{
+app.post('/app/change_username', (req, res) =>{
     let data = {
         user: req.body.username
     }
     const stmt = db.prepare('UPDATE usersinfo SET username = COALESCE(?,username) WHERE id = ?')
-    const info = stmt.run(data.user, req.params.id)
+    const info = stmt.run(data.user, user_name)
     //res.status(200).json(info)
     console.log("success")
-    res.status(200).redirect('https://localhost:5555/profile.html/')
+    user_name = data.user
+    res.status(200).redirect('https://localhost:5555/login_page.html')
 })
 //Jaycee
 //Changes password in database based on id given
-app.patch('/app/change_password/:id', (req, res) => {
+app.post('/app/change_password', (req, res) => {
     let data = {
         pass: req.body.password
     }
     const stmt = db.prepare('UPDATE usersinfo SET password = COALESCE(?,password) WHERE id = ?')
-    const info = stmt.run(data.pass, req.params.id)
-    console.log("success")
-    res.status(200).redirect('https://localhost:5555/profile.html/')
+    const info = stmt.run(data.pass, user_name)
+    //console.log()
+    res.status(200).redirect('https://localhost:5555/login_page.html')
 })
 //Sarika
 app.delete('/app/delete_account', (req, res) => {
     const stmt = db.prepare('DELETE FROM usersinfo WHERE id = ?')
-    const info = stmt.run(req.params.id)
+    const info = stmt.run(user_name)
     console.log("success")
-    res.status(200).redirect('https://localhost:5555/bye.html/')
+    res.status(200).redirect('https://localhost:5555/bye.html')
 })
 //Anthony
 //Retrieves all past entries based on user
@@ -227,7 +228,7 @@ app.post('/app/new_entry/', (req, res, next) => {
 })
 //Default if endpoint cannot be found
 
-app.use(function(req, res){
+/*app.use(function(req, res){
 	res.json({"message":"Endpoint not found. (404)"});
     res.status(404);
-})
+})*/

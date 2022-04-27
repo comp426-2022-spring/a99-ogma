@@ -11,24 +11,27 @@
   <div style = "text-align: center;">
   <h1>Account Settings</h1>
   <body>
-    <form id=change-user action="http://localhost:5555/app/change_username/:id" method="post">
+    <form id=change-user action="http://localhost:5555/app/change_username" method="post">
         <div class="form-group">
             <label for="username">Enter a New Username:</label>
             <input type="text" class="form-control" name="username">
+            <input type="submit" value="Submit">
         </div>
-        <button onclick="location.href = 'profile.html';" type="submit" class="btn btn-primary">Change Username</button>
+       <!-- <button onclick="location.href = 'profile.html';" type="submit" class="btn btn-primary">Change Username</button>-->
     </form>
 
-    <form id=change-pass action="https://localhost:5555/app/change_password/:id" method="post">
+    <form id=change-pass action="https://localhost:5555/app/change_password" method="post">
         <div class="form-group">
             <label for="password">Enter a New Password:</label>
             <input type = "text" class="form-control" name="password">
+            <input type="submit" value="Submit">
         </div>
-        <button onclick="location.href = 'profile.html';" type="submit" class="btn btn-primary">Change Password</button>
+        <!--<button onclick="location.href = 'profile.html';" type="submit" class="btn btn-primary">Change Password</button>-->
     </form>
-    <form id=delete-account action="https://localhost:5555/app/delete_account" method="post">
+    <form id=delete-account action="https://localhost:5555/app/delete_account" method="delete">
       <label>Do you want to stop journaling?</label>
-      <button onclick= "location.href = 'bye.html';" type="submit" class="btn btn-primary">Delete Account</button>
+      <input type="submit" value="Submit">
+      <!--<button onclick= "location.href = 'bye.html';" type="submit" class="btn btn-primary">Delete Account</button>-->
     </form>
     </body>
 </div>
