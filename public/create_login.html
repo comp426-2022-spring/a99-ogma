@@ -10,6 +10,7 @@
   <div style = "text-align: center;">
   <h1>Let's get started.</h1>
   <body>
+      <!--
     <form id="new_user" action="entry_page.html" method="POST">
         <div class="form-group">
             <label for="email">Your email address:</label>
@@ -29,6 +30,24 @@
 
         <button onclick= "location.href = 'entry_page.html';" type="submit" class="btn btn-primary">Create my account</button>
     </form>
+-->
+    <form id="new_user">
+        
+        <label for="user">
+            <strong>Username</strong>
+        </label>
+        <input type="text" name="user" id="user">
+<label for="pass">
+            <strong>Password</strong>
+        </label>
+        <input type="text" name="pass" id="pass">
+        <label for="email">
+            <strong>Email</strong>
+        </label>
+        <input type="text" name="email" id="email">
+        <input type="submit" value="Submit">
+    </form>
+    <script src="main.js"></script>
     </body>
 </div>
 </html>
