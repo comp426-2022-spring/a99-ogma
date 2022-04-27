@@ -173,7 +173,8 @@ app.patch('/app/change_username/:id', (req, res) =>{
     const stmt = db.prepare('UPDATE usersinfo SET username = COALESCE(?,username) WHERE id = ?')
     const info = stmt.run(data.user, req.params.id)
     //res.status(200).json(info)
-    res.status(200).redirect('https://localhost:5555/bye.html')
+    console.log("success")
+    res.status(200).redirect('https://localhost:5555/profile.html/')
 })
 //Jaycee
 //Changes password in database based on id given
@@ -183,13 +184,15 @@ app.patch('/app/change_password/:id', (req, res) => {
     }
     const stmt = db.prepare('UPDATE usersinfo SET password = COALESCE(?,password) WHERE id = ?')
     const info = stmt.run(data.pass, req.params.id)
-    res.status(200).json(info)
+    console.log("success")
+    res.status(200).redirect('https://localhost:5555/profile.html/')
 })
 //Sarika
 app.delete('/app/delete_account', (req, res) => {
     const stmt = db.prepare('DELETE FROM usersinfo WHERE id = ?')
     const info = stmt.run(req.params.id)
-    res.status(200).json(info)
+    console.log("success")
+    res.status(200).redirect('https://localhost:5555/bye.html/')
 })
 //Anthony
 //Retrieves all past entries based on user
