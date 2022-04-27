@@ -125,7 +125,7 @@ app.post('/app/new_user', (req, res, next) =>{
     //const stmt1 = db.prepare('INSERT INTO usersinfo (username, password, email) VALUES (test1, test, test);')
     //console.log(stmt1)
     console.log("success")
-    res.status(200).sendFile(path.join(__dirname+'/public/login_page.html'))
+    res.status(200).redirect('http://localhost:5555/login_page.html')
     //next();
 }) 
 //Gets user info if given vaild id
