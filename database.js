@@ -18,6 +18,7 @@ if (row === undefined) {
     db.exec(sqlInit);
     const sqlInit2 = `
         CREATE TABLE usersinfo (id INTEGER PRIMARY KEY, username TEXT, password TEXT, email TEXT);
+        INSERT INTO usersinfo (username, password, email) VALUES ('user1','supersecurepassword', 'test'),('test','anotherpassword', 'test');
     `;
     db.exec(sqlInit2);
     const sqlInit3 = `

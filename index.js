@@ -39,6 +39,8 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors())
+const path = require('path');
+const router = express.Router();
 app.use(express.json())
 app.use(express.static('./public'));
 
@@ -95,14 +97,14 @@ app.get('/app/', (req, res) => {
 //Attempts to login a user
 app.post('/app/login', (req, res) => {
     let data = {
-        username: req.body.username,
-        password: req.body.password
+        username: req.body.user,
+        password: req.body.pass
     }
     try {
-        const stmt = db.prepare('SELECT entry FROM usersinfo WHERE username = ? AND password = ?').get(data.username, data.password)
-        user_name = data.username;
-        console.log(user_name)
-        res.status(200).json({'user': user_name})
+        const stmt = db.prepare('SELECT * FROM usersinfo WHERE username = ? AND password = ?').get(data.username, data.password)
+        //user_name = data.username;
+        //console.log(user_name)
+        res.status(200).sendFile(path.join(__dirname+'/public/new_entry.html'))
     }
     catch (e) {
         console.error(e)
@@ -114,26 +116,42 @@ app.post('/app/login', (req, res) => {
 //Creates a new user
 app.post('/app/new_user', (req, res, next) =>{
     let data = {
-        user: req.body.username,
-        pass: req.body.password,
+        user: req.body.user,
+        pass: req.body.pass,
         email: req.body.email
     }
     const stmt = db.prepare('INSERT INTO usersinfo (username, password, email) VALUES (?, ?, ?)')
     const info = stmt.run(data.user, data.pass, data.email)
-    console.log(info)
-    res.status(200).json(info)
+    //const stmt1 = db.prepare('INSERT INTO usersinfo (username, password, email) VALUES (test1, test, test);')
+    //console.log(stmt1)
+    console.log("success")
+    res.status(200).sendFile(path.join(__dirname+'/public/login_page.html'))
+    //next();
 }) 
 //Gets user info if given vaild id
-app.get('/app/accountinfo/:id', (req, res) =>{
+app.get('/app/accountinfo', (req, res) =>{
     try {
-    const stmt = db.prepare('SELECT * FROM usersinfo WHERE username = ?').get(req.params.id)
-    const entries = stmt.run(req.params.id).all()
-    console.log(entries)
-    res.status(200).json(stmt)
+    const stmt = db.prepare('SELECT * FROM usersinfo').all()
+    //const entries = stmt.run(req.params.id).all()
+    //console.log(stmt)
+    res.status(200).send(stmt)
+    //console.log("success")
+    }
+    catch (e) {
+        console.error(e)
+    }
+}) 
+
+app.get('/app/accountinfo/:user', (req, res) =>{
+    try {
+    const stmt = db.prepare('SELECT * FROM usersinfo WHERE username = ?').get(req.params.user)
+    //const entries = stmt.run(req.params.id).all()
+    //console.log(stmt)
+    res.status(200).send(stmt)
     console.log("success")
     }
     catch (e) {
-        console.log('1')
+        console.error(e)
     }
 }) 
 //Jaycee
@@ -194,7 +212,7 @@ app.post('/app/new_entry/:user', (req, res) => {
 })
 //Default if endpoint cannot be found
 
-app.use(function(req, res){
+/*app.use(function(req, res){
 	res.json({"message":"Endpoint not found. (404)"});
     res.status(404);
-})
+})*/

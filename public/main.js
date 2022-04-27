@@ -1,6 +1,6 @@
-const log = document.getElementById("login");
+const logger = document.getElementById("login");
 const usr = "";
-log.addEventListener("submit", loginCheck)
+logger.addEventListener("submit", loginCheck)
 async function loginCheck(event) {
     event.preventDefault();
             
@@ -18,7 +18,7 @@ async function loginCheck(event) {
         usr = info.user
         console.log(usr)
         window.location.href = 'new_entry.html'
-        window.getElementById("fake").innerHTML = "How are you feeling " + usr;
+        window.getElementById("fake").innerHTML = "How are you feeling " + user;
     } catch (error) {
         console.log(error);
     }
@@ -42,8 +42,8 @@ async function sendInfo({ url, formData }) {
     return response.json()
 }
 
-const log = document.getElementById("new_user");
-log.addEventListener("submit", registerUser)
+const val = document.getElementById("new_use");
+val.addEventListener("submit", registerUser)
 async function registerUser(event) {
     event.preventDefault();
             
