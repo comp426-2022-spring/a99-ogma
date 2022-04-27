@@ -29,7 +29,7 @@
   .w3-hover-text-theme:hover {color:#87ceeb !important}
   .w3-hover-border-theme:hover {border-color:#87ceeb !important}
 
-  h1 { color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 150px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
+  h1 { color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 100px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
 
   body {
     background-color: rgb(222, 241, 243);
@@ -47,14 +47,14 @@
     color: rgba(0, 0, 0, 0.85);
     cursor: pointer;
     display: inline-flex;
-    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 16px;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 20px;
     font-weight: 600;
     justify-content: center;
     line-height: 1.25;
-    margin: 0;
+    margin: 20px;
     min-height: 3rem;
-    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    padding: 20px 20px;
     position: relative;
     text-decoration: none;
     transition: all 250ms;
@@ -65,24 +65,19 @@
     width: auto;
   }
 
-  .button-6:hover,
-  .button-6:focus {
-    border-color: rgba(0, 0, 0, 0.15);
-    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-    color: rgba(0, 0, 0, 0.65);
-  }
+label {
+  color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 30px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; 
+}
 
-  .button-6:hover {
-    transform: translateY(-1px);
-  }
-
-  .button-6:active {
-    background-color: #F0F0F1;
-    border-color: rgba(0, 0, 0, 0.15);
-    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
-    color: rgba(0, 0, 0, 0.65);
-    transform: translateY(0);
-  }
-  
-
-  
+input[type=text] {
+  width: 95%;
+  padding: 12px 20px;
+  margin: 8px 30px;
+  box-sizing: border-box;
+}
+input[type=submit] {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 30px;
+  box-sizing: border-box;
+}
