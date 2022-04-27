@@ -101,14 +101,24 @@ app.post('/app/login', (req, res) => {
         password: req.body.pass
     }
     try {
+        if ((data.username == null) || (data.password == null)) {
+            res.status(401).redirect('http://localhost:5555/login_page.html')
+        }
         const stmt = db.prepare('SELECT * FROM usersinfo WHERE username = ? AND password = ?').get(data.username, data.password)
         //user_name = data.username;
-        //console.log(user_name)
-        res.status(200).sendFile(path.join(__dirname+'/public/new_entry.html'))
+        console.log(stmt)
+        if (stmt.username != null) {
+        console.log(user_name)
+        res.status(200).redirect('http://localhost:5555/new_entry.html')
+        }
+        else {
+            console.log("Invaild")
+            res.status(401).redirect('http://localhost:5555/login_page.html')
+        }
     }
     catch (e) {
         console.error(e)
-        res.status(401).json({'message':'invaild username or password'})
+        res.status(401).redirect('http://localhost:5555/login_page.html')
     }
 })
 //console.log(user_name)
