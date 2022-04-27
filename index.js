@@ -209,20 +209,21 @@ app.patch('/app/edit_entry/:user', (req, res) => {
 })
 //Anthony
 //Inserts new entry into database, and displays new entry
-app.post('/app/new_entry/:user', (req, res) => {
+app.post('/app/new_entry/', (req, res) => {
     const stmt1 = db.prepare('SELECT MAX(entrynumber) FROM entrylogs WHERE username = ?')
-    const next_entry = stmt1.run(req.params.user) + 1
+    const next_entry = stmt1.run(user_name) + 1
     let data = {
         entry_rating: req.body.rating,
         new_entry: req.body.entry
     }
-    const stmt2 = db.prepare('INSERT INTO entrylogs (username, rating, entry, time, entrynumber) VALUES (?,?,?,?,?)')
-    const the_entry = stmt2.run(req.params.user, data.entry_rating, data.new_entry, req.time, next_entry)
-    res.status(200).json(the_entry)
+    const stmt2 = db.prepare('INSERT or IGNORE INTO entrylogs (username, rating, entry, time, entrynumber) VALUES (?,?,?,?,?)')
+    const the_entry = stmt2.run(user_name, data.entry_rating, data.new_entry, req.time, next_entry)
+    console.log(data)
+    res.status(200).redirect("http://localhost:5555/welcome_back.html")
 })
 //Default if endpoint cannot be found
 
-/*app.use(function(req, res){
+app.use(function(req, res){
 	res.json({"message":"Endpoint not found. (404)"});
     res.status(404);
-})*/
+})
