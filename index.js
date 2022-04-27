@@ -90,7 +90,7 @@ app.get('/app/', (req, res) => {
     res.statusMessage = 'OK';
     res.status(200);
     res.type('text/plain')
-    res.send(res.statusCode + ' ' + res.statusMessage);
+    res.redirect('http://localhost:5555/');
 
     //res.render('articles/index', {articles: articles})
   });
