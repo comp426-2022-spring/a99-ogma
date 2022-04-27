@@ -55,7 +55,7 @@ const server = app.listen(port, () => {
     console.log('App listening on port %PORT%'.replace('%PORT%',port))
 });
 
-const user_name = null // Gloabl var that is set with a vaild login
+var user_name = "" // Gloabl var that is set with a vaild login
 
 
 app.use((req, res, next) => {
@@ -105,7 +105,7 @@ app.post('/app/login', (req, res) => {
             res.status(401).redirect('http://localhost:5555/login_page.html')
         }
         const stmt = db.prepare('SELECT * FROM usersinfo WHERE username = ? AND password = ?').get(data.username, data.password)
-        //user_name = data.username;
+        user_name = data.username;
         console.log(stmt)
         if (stmt.username != null) {
         console.log(user_name)
@@ -139,7 +139,7 @@ app.post('/app/new_user', (req, res, next) =>{
     //next();
 }) 
 //Gets user info if given vaild id
-app.get('/app/accountinfo', (req, res) =>{
+app.get('/app/accountinfo/debug', (req, res) =>{
     try {
     const stmt = db.prepare('SELECT * FROM usersinfo').all()
     //const entries = stmt.run(req.params.id).all()
@@ -152,9 +152,9 @@ app.get('/app/accountinfo', (req, res) =>{
     }
 }) 
 
-app.get('/app/accountinfo/:user', (req, res) =>{
+app.get('/app/accountinfo/', (req, res) =>{
     try {
-    const stmt = db.prepare('SELECT * FROM usersinfo WHERE username = ?').get(req.params.user)
+    const stmt = db.prepare('SELECT * FROM usersinfo WHERE username = ?').get(user_name)
     //const entries = stmt.run(req.params.id).all()
     //console.log(stmt)
     res.status(200).send(stmt)
