@@ -192,7 +192,8 @@ app.post('/app/new_entry/:user', (req, res) => {
     res.status(200).json(the_entry)
 })
 //Default if endpoint cannot be found
+/*
 app.use(function(req, res){
 	res.json({"message":"Endpoint not found. (404)"});
     res.status(404);
-});
+});*/

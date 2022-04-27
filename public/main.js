@@ -14,7 +14,7 @@ async function loginCheck(event) {
 
         console.log(info);
         console.log("Login Success")
-        window.location.href = 'entry_page.html'
+        window.location.href = 'new_entry.html'
     } catch (error) {
         console.log(error);
     }
