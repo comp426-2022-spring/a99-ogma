@@ -44,7 +44,7 @@
     border-radius: .25rem;
     box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
     box-sizing: border-box;
-    color: #1b7a9f;
+    color: #5fa1bb;
     cursor: pointer;
     display: inline-flex;
     font-family: 'Helvetica Neue', sans-serif;
@@ -66,7 +66,7 @@
   }
 
 label {
-  color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 30px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; 
+  color: #5fa1bb; font-family: 'Helvetica Neue', sans-serif; font-size: 30px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; 
 }
 
 input[type=text], input[type=form-control] {
@@ -99,6 +99,7 @@ input[type=submit] {
   touch-action: manipulation;
   vertical-align: baseline;
   width: auto;
+  color: #5fa1bb;
 }
 
 textarea {
