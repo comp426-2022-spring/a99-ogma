@@ -10,19 +10,15 @@ This project is a functional "mental health journal" website. Users can log into
 2. Sarika: Review and backend
 3. Anthony: Release and database
 4. Karen: Project management and frontend/design
-5. Jaycee: Plan and backend
+5. Jaycee: Plan and backend/connecting frontend and backend
 
 # Project Scope and Details
 
-Having a diary/planner system to incentivize check-ins
-
-Some way to send reminders to do check-in
-
-Access to Mental Health Resources 
-
-Ability to rate day from 1 to 10 and notifications that pop up depending on the rating
-
-If the user rates certain mental health on the lower end for serval days, send additional resources/gentle push
+Having a personal diary/planner system for users to write about their mental health
+Rate their day on a scale
+Access to mental health resources
+Read over past journal entries
+Change account information and delete account
 
 # Choose License: GPL 3.0 or later
 
