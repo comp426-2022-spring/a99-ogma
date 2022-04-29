@@ -1,3 +1,197 @@
+# API Documentation
+
+## Endpoints
+
+### /app/ (GET)
+#### Request cURL
+
+```
+
+```
+
+#### Response body
+
+```
+
+```
+
+#### Response headers
+
+```
+
+```
+
+### /app/login (POST)
+#### Request cURL
+
+```
+
+```
+
+#### Response body
+
+```
+
+```
+
+#### Response headers
+
+```
+
+```
+
+### /app/new_user (POST)
+#### Request cURL
+
+```
+
+```
+
+#### Response body
+
+```
+
+```
+
+#### Response headers
+
+```
+
+```
+
+### /app/accountinfo/debug/ (GET)
+#### Request cURL
+
+```
+
+```
+
+#### Response body
+
+```
+
+```
+
+#### Response headers
+
+```
+
+```
+
+### /app/accountinfo/ (GET)
+#### Request cURL
+
+```
+
+```
+
+#### Response body
+
+```
+
+```
+
+#### Response headers
+
+```
+
+```
+
+### /app/change_username (POST)
+#### Request cURL
+
+```
+
+```
+
+#### Response body
+
+```
+
+```
+
+#### Response headers
+
+```
+
+```
+
+### /app/change_password (POST)
+#### Request cURL
+
+```
+
+```
+
+#### Response body
+
+```
+
+```
+
+#### Response headers
+
+```
+
+```
+
+### /app/delete_account (POST)
+#### Request cURL
+
+```
+
+```
+
+#### Response body
+
+```
+
+```
+
+#### Response headers
+
+```
+
+```
+
+### /app/past_entries/ (GET)
+#### Request cURL
+
+```
+
+```
+
+#### Response body
+
+```
+
+```
+
+#### Response headers
+
+```
+
+```
+
+### /app/new_entry (POST)
+#### Request cURL
+
+```
+
+```
+
+#### Response body
+
+```
+
+```
+
+#### Response headers
+
+```
+
+```
+
 1. /app/login - Attempts to login a user
 
 2. /app/new_user - Creates a new user
