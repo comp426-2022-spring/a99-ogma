@@ -1,8 +1,28 @@
-# a99 Final Project
+# a99 Final Project: Ogma
+This webite is developed by the Ogma Team. Our goal for this website is to make a digital journal where users can rate their days and log what they are currently feeling. Journaling is a great way to release what you're feeling and is a way to process what you're feeling. In these unprecedented times, it's important to have a place where you can release and process what you feel, and this is what we set out to make.
 
-## UPDATE
+# Team Management
+1. Maya: Documentation and frontend/design
+2. Sarika: Review and backend
+3. Anthony: Release and database
+4. Karen: Project management and frontend/design
+5. Jaycee: Plan and backend
 
-You don't need to accept this assignment since you are already assigned to teams. So, there is not assignment invite link for a99.
+# Project Scope and Details
+
+Having a diary/planner system to incentivize check-ins
+
+Some way to send reminders to do check-in
+
+Access to Mental Health Resources 
+
+Ability to rate day from 1 to 10 and notifications that pop up depending on the rating
+
+If the user rates certain mental health on the lower end for serval days, send additional resources/gentle push
+
+# Choose License: GPL 3.0 or later
+
+# Choose API framework: Express API
 
 ## Summary 
 
