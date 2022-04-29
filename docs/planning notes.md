@@ -1,14 +1,13 @@
 # Planning Notes
 
 ## Backend
-Backend:
 1: Create a new user, ask for username, password, etc.
-Delete user
-Edit username, password, etc.
+  Delete user
+  Edit username, password, etc.
 2: Middleware to log standard interactions w/ site
 3: New entry (date created, entry, rating)
-Ranking based on ratings
-Editing entry
+  Ranking based on ratings
+  Editing entry
 4: Port stuff, help
 
 ## Database
@@ -31,27 +30,32 @@ Register, update, see info elsewhere (?), delete account, interactions w front e
 
 ## Pages
 Onboarding (web)
-No account: 
-Button “create an account” → create account/profile page → log in → “create entry” page: 3-smiley face scale rating of how you feel & textbox for words → “finish entry”
-Once finish entry, go to profile, where users can either edit their profile or make a new entry
-Database needs to hold user information and resources that are presented to user after they finish entry
-Account already exists:
-Button “login” → “create entry” button → sliding scale rating of how you feel & textbox for words → “finish entry”
-Once finish entry, go to profile, where users can either edit their profile or make a new entry
-Database needs to hold user information and resources that are presented to user after they finish entry
+  No account: 
+    Button “create an account” → create account/profile page → log in → “create entry” page: 3-smiley face scale rating of how you feel & textbox for words → “finish entry”
+    Once user finishes entry, go to profile, where users can either edit their profile or make a new entry
+    Database needs to hold user information and resources that are presented to user after they finish entry
+   Account already exists:
+    Button “login” → “create entry” button → sliding scale rating of how you feel & textbox for words → “finish entry”
+    Once finish entry, go to profile, where users can either edit their profile or make a new entry
+    Database needs to hold user information and resources that are presented to user after they finish entry
 Profile page:
-Account info, edit account, delete account, resource access, past entries, make new entry
+  Account info
+  Edit account: change username and password form
+    Delete account
+  Resource access
+  Past entries
+  Make new entry
 Edit account:
-Can either change username or password because primary ID is email
+  Can either change username or password because primary ID is email
 Resources page:
-List of all resources -> link to external pages of resources from CAPS, UNC, etc.
+  List of all resources -> link to external pages of resources from CAPS, UNC, etc.
 
 Database to keep in mind:
-3 smiley-face review
-Entry listings
-Username
-Password
-ID based on email
+  ID based on email
+   Username
+  Password
+  3 smiley-face review
+  Entry listings
 
 ## Planning ahead
 *if we have time*: Future features
