@@ -1,3 +1,6 @@
+# Planning Notes
+
+## Backend
 Backend:
 1: Create a new user, ask for username, password, etc.
 Delete user
@@ -8,11 +11,13 @@ Ranking based on ratings
 Editing entry
 4: Port stuff, help
 
+## Database
 Database:
 1: Users (username, password, personal information)
 2: Interactions (a04 logging)
 3: Entries (rating, date, entry themselves, user)
 
+## Outline
 Basic pages we need:
 1. Onboarding
 2. Profile
@@ -20,9 +25,11 @@ Basic pages we need:
 4. Resources
 
 Frontend/design/Figma: Karen & Maya
+Link to our Figma: https://www.figma.com/file/fBScfXf3AmM5G797wMe8SW/My-digital-journal?node-id=0%3A1 
 
 Register, update, see info elsewhere (?), delete account, interactions w front end logged in database
 
+## Pages
 Onboarding (web)
 No account: 
 Button “create an account” → create account/profile page → log in → “create entry” page: 3-smiley face scale rating of how you feel & textbox for words → “finish entry”
@@ -46,8 +53,7 @@ Username
 Password
 ID based on email
 
+## Planning ahead
 *if we have time*: Future features
 Gamify 
 Weekly resources depending on weekly ratings
-
-Link to our Figma: https://www.figma.com/file/fBScfXf3AmM5G797wMe8SW/My-digital-journal?node-id=0%3A1 
