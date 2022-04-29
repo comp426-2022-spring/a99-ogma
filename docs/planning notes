@@ -1,0 +1,14 @@
+Backend:
+1: Create a new user, ask for username, password, etc.
+Delete user
+Edit username, password, etc.
+2: Middleware to log standard interactions w/ site
+3: New entry (date created, entry, rating)
+URLs based on ratings
+Editing entry
+4: Port stuff, help
+
+Database:
+1: Users (username, password, personal information)
+2: Interactions (a04 logging)
+3: Entries (rating, date, entry themselves, user)
