@@ -1,11 +1,3 @@
-/* div.hidden {
-    display: none;
-  }
-  
-  div.active {
-    border: 5px solid red;
-  } */
-
   .w3-theme-l5 {color:#000 !important; background-color:#f8fcfe !important}
   .w3-theme-l4 {color:#000 !important; background-color:#e7f5fb !important}
   .w3-theme-l3 {color:#000 !important; background-color:#d0ecf7 !important}
@@ -29,7 +21,7 @@
   .w3-hover-text-theme:hover {color:#87ceeb !important}
   .w3-hover-border-theme:hover {border-color:#87ceeb !important}
 
-  h1 { color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 100px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
+  h1 { color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 100px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; margin: 30px}
 
   body {
     background-color: rgb(222, 241, 243);
@@ -88,7 +80,7 @@ input[type=submit] {
   font-weight: 600;
   justify-content: center;
   line-height: 1.25;
-  margin: 20px;
+  margin: 10px;
   min-height: 3rem;
   padding: 20px 20px;
   position: relative;
@@ -102,11 +94,11 @@ input[type=submit] {
   color: #5fa1bb;
 }
 
-textarea {
-  width: 100%;
+input[name=entry] {
+  width: 90%;
   height: 150px;
-  padding: 12px 20px;
-  box-sizing: border-box;
+  padding: 15px 20px;
+  box-sizing: content-box;
   border: 2px solid #ccc;
   border-radius: 4px;
   background-color: #FFFFFF;
@@ -116,4 +108,59 @@ textarea {
 
 h2 {
   color: #1b7a9f; font-family: 'Helvetica Neue', sans-serif; font-size: 30px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
+}
+
+h3 {
+  color: #5fa1bb; font-family: 'Helvetica Neue', sans-serif; font-size: 50px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
+}
+
+h4 {
+  color: #1b7a9f; font-family: 'Helvetica Neue', sans-serif; font-size: 50px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
+}
+
+p {
+  color: #1b7a9f; font-family: 'Helvetica Neue', sans-serif; font-size: 20px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
+}
+
+
+input[type="radio"] {
+-webkit-appearance: none;
+width: 90px;
+height: 90px;
+border: none;
+cursor: pointer;
+transition: border .2s ease;
+filter: grayscale(100%);
+margin: 10px 10px;
+transition: all .2s ease;
+}
+
+.hover, .checked {
+  filter:	grayscale(0);
+}
+
+:focus {
+  outline: 0;
+}
+
+.happy {
+  background: url('https://res.cloudinary.com/turdlife/image/upload/v1492864443/happy_ampvnc.svg') center;
+  background-size: cover;
+}
+
+.neutral {
+  background: url('https://res.cloudinary.com/turdlife/image/upload/v1492864443/neutral_t3q8hz.svg') center;
+  background-size: cover;
+}
+.sad {
+  background: url('https://res.cloudinary.com/turdlife/image/upload/v1492864443/sad_bj1tuj.svg') center;
+  background-size: cover;
+}
+
+.mtt {
+position: fixed;
+bottom: 10px;
+right: 20px;
+color: #999;
+text-decoration: none;
 }
