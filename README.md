@@ -62,6 +62,8 @@ All the rest of the assignment instructions are available at: https://comp426.jo
 
 Good skill and be creative!
 
-
-
-
+## Setup
+1. Clone repository
+2. npm install
+3. node index.js
+4. go to http://localhost:5555/app/
