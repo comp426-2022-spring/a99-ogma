@@ -237,9 +237,3 @@ app.use(function(req, res){
 	res.json({"message":"Endpoint not found. (404)"});
     res.status(404);
 })
-
-//Radio button image meanings
-const INPUTS = document.querySelectorAll('#smileys input');
-const updateValue = e => document.querySelector('#result').innerHTML = e.target.value;
-
-INPUTS.forEach(el => el.addEventListener('click', e => updateValue(e)));
