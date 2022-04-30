@@ -231,8 +231,8 @@ app.post('/app/new_entry/', (req, res, next) => {
     console.log(data)
     res.status(200).redirect("http://localhost:5555/welcome_back.html")
 })
-//Default if endpoint cannot be found
 
+//Default if endpoint cannot be found
 app.use(function(req, res){
 	res.json({"message":"Endpoint not found. (404)"});
     res.status(404);
