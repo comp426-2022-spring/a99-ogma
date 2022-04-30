@@ -79,6 +79,7 @@ app.use((req, res, next) => {
 })
 const WRITESTREAM = fs.createWriteStream('access.log', { flags: 'a' })
     app.use(morgan('combined', { stream: WRITESTREAM }))
+    
 //App entry point
 app.get('/app/', (req, res) => {
     const articles = [{
