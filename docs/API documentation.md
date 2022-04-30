@@ -6,7 +6,7 @@
 #### Request cURL
 
 ```
-
+http://localhost:5555/app/
 ```
 
 #### Response body
