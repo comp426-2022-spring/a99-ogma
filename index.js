@@ -79,7 +79,6 @@ app.use((req, res, next) => {
 })
 const WRITESTREAM = fs.createWriteStream('access.log', { flags: 'a' })
     app.use(morgan('combined', { stream: WRITESTREAM }))
-
 //App entry point
 app.get('/app/', (req, res) => {
     const articles = [{
@@ -90,8 +89,10 @@ app.get('/app/', (req, res) => {
     res.statusCode = 200;
     res.statusMessage = 'OK';
     res.status(200);
-    res.redirect('http://localhost:5555/app/');
-    res.status(200).sendFile(path.join(__dirname, "public/index.html"))
+    res.type('text/plain')
+    res.redirect('http://localhost:5555/');
+
+    //res.render('articles/index', {articles: articles})
   });
 //Attempts to login a user
 app.post('/app/login', (req, res) => {
@@ -101,23 +102,23 @@ app.post('/app/login', (req, res) => {
     }
     try {
         if ((data.username == null) || (data.password == null)) {
-            res.status(401).redirect('/app/login')
+            res.status(401).redirect('http://localhost:5555/login_page.html')
         }
         const stmt = db.prepare('SELECT * FROM usersinfo WHERE username = ? AND password = ?').get(data.username, data.password)
         user_name = data.username;
         console.log(stmt)
         if (stmt.username != null) {
         //console.log(user_name)
-        res.status(200).redirect('/app/new_entry')
+        res.status(200).redirect('http://localhost:5555/new_entry.html')
         }
         else {
             console.log("Invaild")
-            res.status(401).redirect('/app/login')
+            res.status(401).redirect('http://localhost:5555/login_page.html')
         }
     }
     catch (e) {
         console.error(e)
-        res.status(401).redirect('/app/login')
+        res.status(401).redirect('http://localhost:5555/login_page.html')
     }
 })
 //console.log(user_name)
