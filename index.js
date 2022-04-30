@@ -223,7 +223,7 @@ app.post('/app/new_entry/', (req, res, next) => {
     //const stmt1 = db.prepare('SELECT MAX(entrynumber) FROM entrylogs WHERE username = ?')
     //const next_entry = stmt1.run(user_name) + 1
     let data = {
-        entry_rating: req.body.rating,
+        entry_rating: req.body.smiley,
         new_entry: req.body.entry
     }
     const stmt2 = db.prepare('INSERT INTO entrylogs (username, rating, entry) VALUES (?,?,?)')
