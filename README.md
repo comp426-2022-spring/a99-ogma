@@ -14,11 +14,11 @@ This project is a functional "mental health journal" website. Users can log into
 
 ## Project Scope and Details
 
-Having a personal diary/planner system for users to write about their mental health
-Rate their day on a scale
-Access to mental health resources
-Read over past journal entries
-Change account information and delete account
+- Having a personal diary/planner system for users to write about their mental health
+- Rate their day on a scale
+- Access to mental health resources
+- Read over past journal entries
+- Change account information and delete account
 
 ## Choose License: GPL 3.0 or later
 
